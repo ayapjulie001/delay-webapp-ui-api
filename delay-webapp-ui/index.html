@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delayed Response Test</title>
+</head>
+<body>
+    <h1>Testing Delayed Response</h1>
+    <p id="status">Waiting for response...</p>
+
+    <script>
+        fetch('/delayed-response?delay=5000')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('status').textContent = data.message;
+            })
+            .catch(error => {
+                document.getElementById('status').textContent = 'Error: ' + error;
+            });
+    </script>
+</body>
+</html>

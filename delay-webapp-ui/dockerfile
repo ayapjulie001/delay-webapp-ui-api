@@ -1,0 +1,19 @@
+# Use official Node.js image
+FROM node:18
+
+# Create app directory
+WORKDIR ./delay-webapp-ui
+
+# Copy sample app
+COPY . ./delay-webapp-ui
+
+# Install dependencies
+RUN cd ./delay-webapp-ui \
+    && ls -ltr \
+    && npm install
+
+# Expose the port the app runs on
+EXPOSE 3001
+
+# Start the app
+CMD [ "node", "./delay-webapp-ui/index.js" ]
